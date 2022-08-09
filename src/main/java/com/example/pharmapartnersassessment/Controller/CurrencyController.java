@@ -4,8 +4,9 @@ import com.example.pharmapartnersassessment.model.dto.CryptoValutaDto;
 import com.example.pharmapartnersassessment.model.dto.UpdateCryptoValuta;
 import com.example.pharmapartnersassessment.model.entity.CryptoValuta;
 import com.example.pharmapartnersassessment.service.CurrencyService;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -32,8 +33,13 @@ public class CurrencyController {
     }
 
     @GetMapping("currencies")
-    public ResponseEntity<List<CryptoValutaDto>> getAllRecords(){
-        return ResponseEntity.ok(currencyService.getAllRecords());
+    public ResponseEntity<List<CryptoValuta>> getAllRecords(
+            @RequestParam(defaultValue = "0") Integer page,
+            @RequestParam(defaultValue = "10") Integer size,
+            @RequestParam(defaultValue = "ticker") String sort)
+    {
+      List<CryptoValuta> list = currencyService.getAllRecords(page, size, sort);
+      return ResponseEntity.ok(list);
     }
 
     @PutMapping("currencies/{id}")

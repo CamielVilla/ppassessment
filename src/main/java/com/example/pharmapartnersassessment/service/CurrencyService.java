@@ -5,6 +5,10 @@ import com.example.pharmapartnersassessment.model.dto.CreateCryptoValuta;
 import com.example.pharmapartnersassessment.model.dto.CryptoValutaDto;
 import com.example.pharmapartnersassessment.model.dto.UpdateCryptoValuta;
 import com.example.pharmapartnersassessment.model.entity.CryptoValuta;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -14,8 +18,6 @@ import java.util.List;
 public class CurrencyService {
 
     private final CurrencyRepository currencyRepository;
-    public int getAllRecords;
-    public int deleteRecordById;
 
     public CurrencyService(CurrencyRepository currencyRepository) {
         this.currencyRepository = currencyRepository;
@@ -47,12 +49,17 @@ public class CurrencyService {
         }
     }
 
-    public List<CryptoValutaDto> getAllRecords (){
-        List<CryptoValutaDto> dtoList = new ArrayList<>();
-        List<CryptoValuta> cryptoValutas = currencyRepository.findAll();
-        for (CryptoValuta c : cryptoValutas){
-            dtoList.add(toDto(c));
-        }return dtoList;
+    public List<CryptoValuta> getAllRecords (Integer page, Integer size, String sort){
+        Pageable paging = PageRequest.of(page, size, Sort.by(sort));
+
+        Page<CryptoValuta> pagedResult = currencyRepository.findAll(paging);
+
+        if(pagedResult.hasContent()){
+            return pagedResult.getContent();
+        }else {
+            return new ArrayList<CryptoValuta>();
+        }
+
     }
 
     public CryptoValutaDto updateRecord (String id, UpdateCryptoValuta updateCryptoValuta){
