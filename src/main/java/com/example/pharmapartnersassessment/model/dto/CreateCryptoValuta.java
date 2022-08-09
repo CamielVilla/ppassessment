@@ -3,8 +3,8 @@ package com.example.pharmapartnersassessment.model.dto;
 public class CreateCryptoValuta {
     private String ticker;
     private String name;
-    private int numberOfCoins;
-    private int marketCap;
+    private Long numberOfCoins;
+    private Long marketCap;
 
     public String getTicker() {
         return ticker;
@@ -22,19 +22,19 @@ public class CreateCryptoValuta {
         this.name = name;
     }
 
-    public int getNumberOfCoins() {
+    public Long getNumberOfCoins() {
         return numberOfCoins;
     }
 
-    public void setNumberOfCoins(int numberOfCoins) {
+    public void setNumberOfCoins(Long numberOfCoins) {
         this.numberOfCoins = numberOfCoins;
     }
 
-    public int getMarketCap() {
+    public Long getMarketCap() {
         return marketCap;
     }
 
-    public void setMarketCap(int marketCap) {
+    public void setMarketCap(Long marketCap) {
         this.marketCap = marketCap;
     }
 }

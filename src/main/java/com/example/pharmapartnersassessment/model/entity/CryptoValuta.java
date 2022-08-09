@@ -8,13 +8,13 @@ public class CryptoValuta {
     @Id
     private String ticker;
     private String name;
-    private int numberOfCoins;
-    private int marketCap;
+    private Long numberOfCoins;
+    private Long marketCap;
 
     public CryptoValuta() {
     }
 
-    public CryptoValuta(String ticker, String name, int numberOfCoins, int marketCap) {
+    public CryptoValuta(String ticker, String name, Long numberOfCoins, Long marketCap) {
         this.ticker = ticker;
         this.name = name;
         this.numberOfCoins = numberOfCoins;
@@ -37,19 +37,19 @@ public class CryptoValuta {
         this.name = name;
     }
 
-    public int getNumberOfCoins() {
+    public Long getNumberOfCoins() {
         return numberOfCoins;
     }
 
-    public void setNumberOfCoins(int numberOfCoins) {
+    public void setNumberOfCoins(Long numberOfCoins) {
         this.numberOfCoins = numberOfCoins;
     }
 
-    public int getMarketCap() {
+    public Long getMarketCap() {
         return marketCap;
     }
 
-    public void setMarketCap(int marketCap) {
+    public void setMarketCap(Long marketCap) {
         this.marketCap = marketCap;
     }
 }
