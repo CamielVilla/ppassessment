@@ -1,6 +1,6 @@
 package com.example.pharmapartnersassessment.service;
 
-import com.example.pharmapartnersassessment.Repository.CurrencyRepository;
+import com.example.pharmapartnersassessment.repository.CurrencyRepository;
 import com.example.pharmapartnersassessment.model.dto.CreateCryptoValuta;
 import com.example.pharmapartnersassessment.model.dto.CryptoValutaDto;
 import com.example.pharmapartnersassessment.model.dto.UpdateCryptoValuta;
