@@ -1,10 +1,10 @@
 package com.example.pharmapartnersassessment.service;
 
-import com.example.pharmapartnersassessment.repository.CurrencyRepository;
 import com.example.pharmapartnersassessment.model.dto.CreateCryptoValuta;
 import com.example.pharmapartnersassessment.model.dto.CryptoValutaDto;
 import com.example.pharmapartnersassessment.model.dto.UpdateCryptoValuta;
 import com.example.pharmapartnersassessment.model.entity.CryptoValuta;
+import com.example.pharmapartnersassessment.repository.CurrencyRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-
 @Service
 public class CurrencyService {
 
@@ -22,6 +21,7 @@ public class CurrencyService {
     public CurrencyService(CurrencyRepository currencyRepository) {
         this.currencyRepository = currencyRepository;
     }
+
     public CryptoValuta createRecord(CreateCryptoValuta createCryptoValuta) {
         CryptoValuta cryptoValuta = new CryptoValuta();
         cryptoValuta.setTicker(createCryptoValuta.getTicker());
@@ -30,6 +30,7 @@ public class CurrencyService {
         cryptoValuta.setMarketCap(createCryptoValuta.getMarketCap());
         return currencyRepository.save(cryptoValuta);
     }
+
 
     public CryptoValutaDto toDto (CryptoValuta cryptoValuta){
         CryptoValutaDto dto = new CryptoValutaDto();

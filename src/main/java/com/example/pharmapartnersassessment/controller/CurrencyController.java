@@ -20,9 +20,6 @@ public class CurrencyController {
         this.currencyService = currencyService;
     }
 
-    public int add (int a, int b){
-        return a = b;
-    }
 
     @PostMapping("currencies")
     public ResponseEntity<CryptoValuta> createRecord (@RequestBody CreateCryptoValuta createCryptoValuta){
