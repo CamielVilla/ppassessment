@@ -1,5 +1,6 @@
 package com.example.pharmapartnersassessment.service;
 
+import com.example.pharmapartnersassessment.exception.idNotExistException;
 import com.example.pharmapartnersassessment.model.dto.CreateCryptoValuta;
 import com.example.pharmapartnersassessment.model.dto.CryptoValutaDto;
 import com.example.pharmapartnersassessment.model.dto.UpdateCryptoValuta;
@@ -46,7 +47,7 @@ public class CurrencyService {
             CryptoValutaDto dto = toDto(currencyRepository.findById(id).get());
             return dto;
         }else {
-            throw new RuntimeException();
+            throw new idNotExistException(id);
         }
     }
 
@@ -58,7 +59,7 @@ public class CurrencyService {
         if(pagedResult.hasContent()){
             return pagedResult.getContent();
         }else {
-            return new ArrayList<CryptoValuta>();
+            return new ArrayList<>();
         }
 
     }
@@ -71,7 +72,7 @@ public class CurrencyService {
             currencyRepository.save(cryptoValuta);
             return toDto(cryptoValuta);
         }else{
-            throw new RuntimeException();
+            throw new idNotExistException(id);
         }
     }
 
@@ -79,7 +80,7 @@ public class CurrencyService {
         if (currencyRepository.existsById(id)){
             currencyRepository.deleteById(id);
         }else {
-            throw new RuntimeException();
+            throw new idNotExistException(id);
         }
     }
 }
