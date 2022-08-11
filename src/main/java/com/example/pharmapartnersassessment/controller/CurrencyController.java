@@ -1,11 +1,9 @@
-package com.example.pharmapartnersassessment.Controller;
+package com.example.pharmapartnersassessment.controller;
 import com.example.pharmapartnersassessment.model.dto.CreateCryptoValuta;
 import com.example.pharmapartnersassessment.model.dto.CryptoValutaDto;
 import com.example.pharmapartnersassessment.model.dto.UpdateCryptoValuta;
 import com.example.pharmapartnersassessment.model.entity.CryptoValuta;
 import com.example.pharmapartnersassessment.service.CurrencyService;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,6 +19,7 @@ public class CurrencyController {
     public CurrencyController(CurrencyService currencyService) {
         this.currencyService = currencyService;
     }
+
 
     @PostMapping("currencies")
     public ResponseEntity<CryptoValuta> createRecord (@RequestBody CreateCryptoValuta createCryptoValuta){
